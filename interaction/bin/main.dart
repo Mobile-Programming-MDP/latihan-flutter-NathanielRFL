@@ -1,14 +1,31 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: HomeScreen(),
-  ));
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const HomeScreen(),
+    );
+  }
 }
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -18,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Interaction'),
+        title: Text("Interaction"),
       ),
       body: Center(
         child: Column(
@@ -27,39 +44,38 @@ class _HomeScreenState extends State<HomeScreen> {
             GestureDetector(
               onTap: () {
                 setState(() {
-                  actionLabel = 'Pengguna melakukan Tap';
+                  actionLabel = "Pengguna melakukan Tap";
                 });
               },
               onDoubleTap: () {
                 setState(() {
-                  actionLabel = 'Pengguna melakukan Double Tap';
+                  actionLabel = "Pengguna melakukan Double Tap";
                 });
               },
               onLongPress: () {
                 setState(() {
-                  actionLabel = 'Pengguna melakukan Long Press';
+                  actionLabel = "Pengguna melakukan Long Press";
                 });
               },
               child: Container(
                 height: 50,
                 width: 150,
                 decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  'Aksi',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                    shape: BoxShape.rectangle,
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(25)),
+                child: Center(
+                  child: Text(
+                    "Aksi",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ),
-            SizedBox(height: 16),
-            Text(
-              actionLabel,
-              style: TextStyle(fontSize: 16),
+            SizedBox(
+              height: 16,
             ),
+            Text(actionLabel)
           ],
         ),
       ),
